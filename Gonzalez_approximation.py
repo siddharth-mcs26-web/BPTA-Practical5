@@ -9,7 +9,7 @@ def Approximation(data_set, k):
         for i in range(len(data_set)):
             d = []
             for c in center_idx:
-                d.append(abs(data_set[i][0] - data_set[c][0]) + abs(data_set[i][1] - data_set[c][1]))
+                d.append(np.linalg.norm(data_set[i] - data_set[c]))
             min_distance.append(min(d))
 
         center_idx.append(np.argmax(min_distance))

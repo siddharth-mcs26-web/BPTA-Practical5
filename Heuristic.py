@@ -13,7 +13,7 @@ def Heuristic(data_set, k):
 
     for center in k_centers:
         
-        distances = np.linalg.norm(data_pts - center, axis=1)
+        distances = np.linalg.norm(data_pts - center)
 
         closest_idx = np.argmin(distances)
         closest_indices.append(closest_idx)
@@ -25,7 +25,7 @@ def Heuristic(data_set, k):
     for i in range(len(data_set)):
         d = []
         for c in closest_indices:
-            d.append(abs(data_set[i][0] - data_set[c][0]) + abs(data_set[i][1] - data_set[c][1]))
+            d.append(np.linalg.norm(data_set[c] - data_set[i]))
         min_distance.append(min(d))
 
     max_distance = max(min_distance)
